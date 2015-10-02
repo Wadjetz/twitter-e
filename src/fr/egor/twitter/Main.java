@@ -8,20 +8,12 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-  TwitterAPI twitterAPI;
-
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
     primaryStage.setTitle("TwitterE");
-    System.out.println("Hello");
     primaryStage.setScene(new Scene(root, 400, 375));
     primaryStage.show();
-
-    twitterAPI = new TwitterAPI();
-    twitterAPI.getHomeTimeline().forEach(s -> {
-      System.out.println(s.getText());
-    });
   }
 
 
