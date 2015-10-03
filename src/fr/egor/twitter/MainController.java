@@ -5,7 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.util.Callback;
 import twitter4j.Status;
 import twitter4j.TwitterException;
 
@@ -29,7 +31,21 @@ public class MainController implements Initializable {
     twitterAPI = new TwitterAPI();
     try {
       tweetsList = FXCollections.observableArrayList(twitterAPI.getHomeTimeline());
-      //tweets.setCellFactory((listView, listCell) -> );
+      tweets.setCellFactory(new Callback<ListView<Status>, ListCell<Status>>() {
+        @Override
+        public ListCell<Status> call(ListView<Status> param) {
+          ListCell<Status> cell = new ListCell<Status>() {
+            @Override
+            protected void updateItem(Status status, boolean empty) {
+              super.updateItem(status, empty);
+              if (status != null) {
+                setText(status.getText());
+              }
+            }
+          };
+          return cell;
+        }
+      });
       tweets.setItems(tweetsList);
     } catch (TwitterException e) {
       e.printStackTrace();
