@@ -12,7 +12,7 @@ public class Main extends Application {
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
     primaryStage.setTitle("TwitterE");
-    primaryStage.setScene(new Scene(root, 400, 375));
+    primaryStage.setScene(new Scene(root, 1200, 700));
     primaryStage.show();
   }
 
