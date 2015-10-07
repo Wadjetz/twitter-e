@@ -5,8 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane alignment="CENTER" gridLinesVisible="true" opacity="1.0" prefHeight="561.0" prefWidth="746.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="fr.egor.twitter.MainController">
-  <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="0" GridPane.rowIndex="0">
+<GridPane alignment="CENTER" opacity="1.0" prefHeight="561.0" prefWidth="746.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="fr.egor.twitter.MainController">
+  <GridPane alignment="CENTER"  GridPane.columnIndex="0" GridPane.rowIndex="0">
     <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" />
       <ColumnConstraints hgrow="ALWAYS" />
