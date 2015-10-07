@@ -43,6 +43,12 @@ public class TwitterAPI {
     User user = twitter.verifyCredentials();
     return String.valueOf(user.getFollowersCount());
   }
+  public void getTrendsProfile() throws TwitterException{
+      Twitter twitter = new TwitterFactory().getInstance();
+      Trends trends = twitter.getPlaceTrends(1);
+    System.out.println(trends);
+    //return "";
+  }
 
 
 
@@ -53,3 +59,4 @@ public class TwitterAPI {
     twitterStream.user();
   }
 }
+

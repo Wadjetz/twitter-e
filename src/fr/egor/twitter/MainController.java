@@ -3,7 +3,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
@@ -21,7 +20,6 @@ public class MainController implements Initializable {
   @FXML
   public ListView<Status> tweets;
   public ImageView userPictureByUrl;
-  public String urlUserPicture;
   public Label fullNameProfil,screenNameProfil,tweetsNombers,abonnementsNumbers,abonnesNumbers;
 
   @Override
@@ -29,17 +27,14 @@ public class MainController implements Initializable {
     twitterAPI = new TwitterAPI();
     try {
       tweetsList = FXCollections.observableArrayList(twitterAPI.getHomeTimeline());
-      urlUserPicture = twitterAPI.getProfileImageUrl();
-
-      tweetsList = FXCollections.observableArrayList(twitterAPI.getHomeTimeline());
       tweets.setItems(tweetsList);
-      Image image = new Image(urlUserPicture);
-      userPictureByUrl.setImage(image);
+      userPictureByUrl.setImage(new Image(twitterAPI.getProfileImageUrl()));
       fullNameProfil.setText(twitterAPI.getFullName());
       screenNameProfil.setText("@"+twitterAPI.getFullScreenName());
       tweetsNombers.setText(twitterAPI.getTweetsCountProfil());
       abonnementsNumbers.setText(twitterAPI.getFriendsCountProfil());
       abonnesNumbers.setText(twitterAPI.getFollowersCountProfil());
+      //twitterAPI.getTrendsProfile();
     } catch (TwitterException e) {
       e.printStackTrace();
     }
