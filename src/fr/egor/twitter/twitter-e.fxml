@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import fr.egor.twitter.view.tweet.send.PostTweetControl?>
+<?import fr.egor.twitter.view.tweet.list.ListTweetControl?>
+<?import fr.egor.twitter.view.profile.ProfileControl?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" >
+  <top>
+    <ProfileControl />
+  </top>
+  <center>
+    <ListTweetControl />
+  </center>
+  <bottom>
+    <PostTweetControl />
+  </bottom>
+</BorderPane>

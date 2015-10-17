@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml">
+  <padding>
+    <Insets bottom="10" left="10" right="10" top="10" />
+  </padding>
+  <HBox>
+
+    <ImageView
+      fitWidth="50"
+      fitHeight="50"
+      fx:id="userPictureByUrl" />
+
+    <VBox>
+      <Label
+        fx:id="fullNameProfil" />
+
+      <Label
+        fx:id="screenNameProfil" />
+    </VBox>
+
+    <Label
+      fx:id="tweetsNombers"
+      text="0" />
+
+    <Label
+      fx:id="abonnementsNumbers"
+      text="0" />
+
+    <Label fx:id="abonnesNumbers" text="0" />
+
+  </HBox>
+</fx:root>
