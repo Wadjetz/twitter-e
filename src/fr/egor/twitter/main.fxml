@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <GridPane alignment="CENTER" opacity="1.0" prefHeight="561.0" prefWidth="746.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="fr.egor.twitter.MainController">
-  <GridPane alignment="CENTER"  GridPane.columnIndex="0" GridPane.rowIndex="0">
+  <GridPane alignment="CENTER" GridPane.columnIndex="0" GridPane.rowIndex="0">
     <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" />
       <ColumnConstraints hgrow="ALWAYS" />
@@ -22,6 +22,8 @@
       <RowConstraints vgrow="ALWAYS" />
       <RowConstraints vgrow="ALWAYS" />
       <RowConstraints vgrow="ALWAYS" />
+      <RowConstraints vgrow="ALWAYS" />
+      <RowConstraints vgrow="ALWAYS" />
     </rowConstraints>
     <ImageView fx:id="userPictureByUrl" GridPane.columnIndex="0" GridPane.columnSpan="4" GridPane.rowIndex="0" GridPane.rowSpan="4" />
     <Label id="fullName" fx:id="fullNameProfil" text="my full name" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="1" />
@@ -30,23 +32,20 @@
       <font>
         <Font size="15.0" />
       </font>
-      <labelFor>
-        <Label fx:id="tweetsNombers" text="0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="1" />
-      </labelFor>
     </Label>
     <Label id="AbonnementsLlb" text="ABONNEMENTS" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="1">
       <labelFor>
-        <Label fx:id="abonnementsNumbers" text="0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="1" />
+        <Label fx:id="abonnementsNumbers" text="0" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="1" />
       </labelFor>
     </Label>
-    <Label id="aboneesLbl"  text="ABONNES" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="1">
+    <Label id="aboneesLbl" text="ABONNES" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.rowSpan="1">
       <labelFor>
-        <Label id="abonees" fx:id="abonnesNumbers" text="0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" GridPane.rowSpan="1" />
+        <Label id="abonees" fx:id="abonnesNumbers" text="0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="1" />
       </labelFor>
     </Label>
-    <fx:reference source="tweetsNombers" />
     <fx:reference source="abonnementsNumbers" />
     <fx:reference source="abonnesNumbers" />
+    <Label id="abonnementsNumbers" fx:id="tweetsNombers" onMouseClicked="#getAllTweets" prefWidth="33.0" text="0" GridPane.columnIndex="0" GridPane.rowIndex="7" />
   </GridPane>
   <columnConstraints>
     <ColumnConstraints hgrow="ALWAYS" />
@@ -67,4 +66,26 @@
     <RowConstraints vgrow="ALWAYS" />
   </rowConstraints>
   <ListView fx:id="tweets" minWidth="-Infinity" prefHeight="642.0" prefWidth="545.0" GridPane.columnIndex="2" GridPane.columnSpan="6" GridPane.rowIndex="0" GridPane.rowSpan="6" />
+  <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="5">
+      <GridPane alignment="CENTER" opacity="1.0" >
+        <columnConstraints>
+          <ColumnConstraints hgrow="ALWAYS" />
+          <ColumnConstraints hgrow="ALWAYS" />
+          <ColumnConstraints hgrow="ALWAYS" />
+          <ColumnConstraints hgrow="ALWAYS" />
+          <ColumnConstraints hgrow="ALWAYS" />
+          <ColumnConstraints hgrow="ALWAYS" />
+          <ColumnConstraints hgrow="ALWAYS" />
+          <ColumnConstraints hgrow="ALWAYS" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints vgrow="ALWAYS" />
+          <RowConstraints vgrow="ALWAYS" />
+          <RowConstraints vgrow="ALWAYS" />
+          <RowConstraints vgrow="ALWAYS" />
+          <RowConstraints vgrow="ALWAYS" />
+          <RowConstraints vgrow="ALWAYS" />
+        </rowConstraints>
+      </GridPane>
+    </Pane>
 </GridPane>

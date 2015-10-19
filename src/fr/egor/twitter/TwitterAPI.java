@@ -1,54 +1,75 @@
 package fr.egor.twitter;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import twitter4j.*;
 
 import java.util.List;
 
 public class TwitterAPI {
+  Twitter twitter;
+  User user;
+  public TwitterAPI() {
+    try {
+      twitter= new TwitterFactory().getInstance();
+      user=twitter.verifyCredentials();
+
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+  }
+
 
   public List<Status> getHomeTimeline() throws TwitterException {
-    Twitter twitter = new TwitterFactory().getInstance();
-    User user = twitter.verifyCredentials();
     return twitter.getHomeTimeline();
+  }
+  public List<Status> getUserTimeline() throws TwitterException {
+    return twitter.getUserTimeline();
+  }
+  public ObservableList<String> getUserTimeLineToString(ObservableList<Status> list) throws TwitterException{
+    ObservableList<String> names = FXCollections
+            .observableArrayList();
+
+    for (Status status : list) {
+     names.add(status.getUser().getScreenName() + " : " + status.getText());
+    }
+    return names;
   }
 
   public String getProfileImageUrl()throws TwitterException{
-    Twitter twitter = new TwitterFactory().getInstance();
-    User user = twitter.verifyCredentials();
     return user.getOriginalProfileImageURL().toString();
   }
   public String getFullName() throws TwitterException{
-    Twitter twitter = new TwitterFactory().getInstance();
-    User user = twitter.verifyCredentials();
     return user.getName();
   }
 
   public String getFullScreenName() throws TwitterException{
-    Twitter twitter = new TwitterFactory().getInstance();
-    User user = twitter.verifyCredentials();
     return user.getScreenName();
   }
   public String getTweetsCountProfil() throws TwitterException{
-    Twitter twitter = new TwitterFactory().getInstance();
-    User user = twitter.verifyCredentials();
     return String.valueOf(user.getStatusesCount());
   }
   public String getFriendsCountProfil() throws TwitterException{
-    Twitter twitter = new TwitterFactory().getInstance();
-    User user = twitter.verifyCredentials();
     return String.valueOf(user.getFriendsCount());
   }
   public String getFollowersCountProfil() throws TwitterException{
-    Twitter twitter = new TwitterFactory().getInstance();
-    User user = twitter.verifyCredentials();
     return String.valueOf(user.getFollowersCount());
   }
   public void getTrendsProfile() throws TwitterException{
-      Twitter twitter = new TwitterFactory().getInstance();
       Trends trends = twitter.getPlaceTrends(1);
-    System.out.println(trends);
     //return "";
   }
+  public String getAllStatus(List<Status> statuses){
+    String str="";
+    for (Status status : statuses) {
+      str+=("@" + status.getUser().getScreenName() + " - " + status.getText());
+    }
+    return str;
+  }
+
+
+
 
 
 
