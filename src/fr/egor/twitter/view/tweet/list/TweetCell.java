@@ -1,4 +1,4 @@
-package fr.egor.twitter;
+package fr.egor.twitter.view.tweet.list;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
