@@ -44,8 +44,6 @@ public class PostTweetControl extends VBox {
   protected void sendTweetButtonAction(ActionEvent event) {
     String text = tweetContent.getText();
     try {
-      System.out.println(text);
-      //TwitterAPI twitterAPI = new TwitterAPI();
       twitterAPI.postTweet(text);
     } catch (TwitterException e) {
       e.printStackTrace();
