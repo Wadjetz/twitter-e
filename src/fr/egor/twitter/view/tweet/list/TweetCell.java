@@ -6,19 +6,25 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import twitter4j.Status;
 
+import java.util.Date;
 
 public class TweetCell extends ListCell<Status> {
   @Override
   protected void updateItem(Status status, boolean empty) {
     super.updateItem(status, empty);
     if (status != null) {
+
       HBox hb1 = new HBox();
+      hb1.setPadding(new Insets(5,15,0,0));
+
       HBox hb2 = new HBox();
+
       VBox vb1 = new VBox();
+      vb1.setPadding(new Insets(0, 15, 0, 15));
+
       // load the image
       Image image = new Image(status.getUser().getProfileImageURL());
 
@@ -37,7 +43,34 @@ public class TweetCell extends ListCell<Status> {
       hb2.getChildren().add(lblScreenName);
 
 
-      Label lblCreatedAt = new Label(status.getUser().getCreatedAt().toString());
+      Label lblCreatedAt = new Label();
+      Long dstatus = status.getCreatedAt().getTime() / 1000l;
+      Long dnow = new Date().getTime() / 1000l;
+      Long Ddif = dnow-dstatus;
+            Long seconds = Ddif % 60;
+            Long minutes= (Ddif / 60)%60;
+            Long heures= ((Ddif / 60) / 60) %24;
+            Long jours= (((Ddif / 60) / 60) /24 ) %30;
+            Long mois= ((((Ddif / 60) / 60) /24) /30 ) %365;
+            Long annee= (((((Ddif / 60) / 60) /24) /30 ) /365) % 365;
+
+            String str ="Il y a ";
+            if(annee >0)
+              str+=" "+annee+ " ans ";
+            if(mois >0)
+              str+=" "+mois+ " mois ";
+            if(jours >0)
+              str+=" "+jours+ " jours ";
+            if(heures >0)
+              str+=" "+heures+ " heures ";
+            if(minutes >0)
+              str+=" "+minutes+ " minutes ";
+            if(seconds >0)
+              str+=" "+seconds+ " seconds ";
+
+
+
+      lblCreatedAt.setText(str);
       lblCreatedAt.setPadding(new Insets(5,15,0,0));
       hb2.getChildren().add(lblCreatedAt);
 
