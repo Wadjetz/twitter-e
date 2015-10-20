@@ -1,6 +1,8 @@
 package fr.egor.twitter.view.tweet.list;
 
 import fr.egor.twitter.api.TwitterAPI;
+import fr.egor.twitter.async.Async;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,9 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import twitter4j.Status;
-import twitter4j.TwitterException;
 
 import java.io.IOException;
+import java.util.List;
 
 public class ListTweetControl extends VBox {
 
@@ -29,12 +31,12 @@ public class ListTweetControl extends VBox {
       throw new RuntimeException(exception);
     }
 
-    try {
-      TwitterAPI twitterAPI = new TwitterAPI();
-      tweetsList = FXCollections.observableArrayList(twitterAPI.getHomeTimeline());
-    } catch (TwitterException e) {
-      e.printStackTrace();
-    }
+    Async.async(() -> {
+      List<Status> list = new TwitterAPI().getHomeTimeline();
+      tweetsList.addAll(list);
+      return null;
+    });
+
     tweets.setItems(tweetsList);
     tweets.setCellFactory(param -> new TweetCell());
   }

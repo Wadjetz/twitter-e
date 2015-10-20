@@ -1,5 +1,10 @@
 package fr.egor.twitter.view.tweet.list;
 
+import fr.egor.twitter.async.Async;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -25,18 +30,19 @@ public class TweetCell extends ListCell<Status> {
       VBox vb1 = new VBox();
       vb1.setPadding(new Insets(0, 15, 0, 15));
 
-      // load the image
-      Image image = new Image(status.getUser().getProfileImageURL());
-
       // simple displays ImageView the image as is
       ImageView iv1 = new ImageView();
-      iv1.setImage(image);
+
+      // load the image
+      Async.async(() -> {
+        Image image = new Image(status.getUser().getProfileImageURL());
+        Platform.runLater(() -> iv1.setImage(image) );
+        return null;
+      });
 
       Label lblName = new Label(status.getUser().getName());
       lblName.setPadding(new Insets(5,15,0,0));
       hb2.getChildren().add(lblName);
-
-
 
       Label lblScreenName = new Label("@"+status.getUser().getScreenName());
       lblScreenName.setPadding(new Insets(5,15,0,0));
