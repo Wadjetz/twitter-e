@@ -9,7 +9,6 @@ public class TwitterAPI implements ITwitterAPI {
   private ITwitterAPI twitterAPI = null;
 
   public TwitterAPI() throws TwitterException {
-    //twitterAPI = new FakeTwitterAPI();
     twitterAPI = new RealTwitterAPI();
   }
 

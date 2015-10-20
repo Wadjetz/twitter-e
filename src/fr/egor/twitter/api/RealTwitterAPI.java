@@ -1,7 +1,6 @@
 package fr.egor.twitter.api;
 
 import twitter4j.*;
-
 import java.util.List;
 
 public class RealTwitterAPI implements ITwitterAPI {

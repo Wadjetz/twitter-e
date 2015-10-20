@@ -1,13 +1,14 @@
 package fr.egor.twitter.view.profile;
 
 import fr.egor.twitter.api.TwitterAPI;
+import fr.egor.twitter.async.Async;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
-import twitter4j.TwitterException;
 
 import java.io.IOException;
 
@@ -31,17 +32,54 @@ public class ProfileControl extends VBox {
       throw new RuntimeException(exception);
     }
 
-    try {
-      TwitterAPI twitterAPI = new TwitterAPI();
-      userPictureByUrl.setImage(new Image(twitterAPI.getProfileImageUrl()));
-      fullNameProfil.setText(twitterAPI.getFullName());
-      screenNameProfil.setText("@"+twitterAPI.getFullScreenName());
-      tweetsNombers.setText(twitterAPI.getTweetsCountProfil() + " tweets");
-      abonnementsNumbers.setText(twitterAPI.getFriendsCountProfil());
-      abonnesNumbers.setText(twitterAPI.getFollowersCountProfil());
-    } catch (TwitterException e) {
-      e.printStackTrace();
-    }
+    Async.async(() -> {
+      Image image = new Image(new TwitterAPI().getProfileImageUrl());
+      Platform.runLater(() ->
+        userPictureByUrl.setImage(image)
+      );
+      return null;
+    });
+
+    Async.async(() -> {
+      String fullname = new TwitterAPI().getFullName();
+      Platform.runLater(() ->
+        fullNameProfil.setText(fullname)
+      );
+      return null;
+    });
+
+    Async.async(() -> {
+      String fullScreenName = new TwitterAPI().getFullScreenName();
+      Platform.runLater(() ->
+        screenNameProfil.setText("@" + fullScreenName)
+      );
+      return null;
+    });
+
+    Async.async(() -> {
+      String tweetsCount = new TwitterAPI().getTweetsCountProfil();
+      Platform.runLater(() ->
+        tweetsNombers.setText(tweetsCount + " tweets")
+      );
+      return null;
+    });
+
+    Async.async(() -> {
+      String friendsCount = new TwitterAPI().getFriendsCountProfil();
+      Platform.runLater(() ->
+        abonnementsNumbers.setText(friendsCount)
+      );
+      return null;
+    });
+
+    Async.async(() -> {
+      String followersCount = new TwitterAPI().getFollowersCountProfil();
+      Platform.runLater(() ->
+        abonnesNumbers.setText(followersCount)
+      );
+      return null;
+    });
+
   }
 
 }
