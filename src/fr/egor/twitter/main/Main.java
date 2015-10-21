@@ -1,7 +1,5 @@
 package fr.egor.twitter.main;
 
-import fr.egor.twitter.api.FakeTwitterAPI;
-import fr.egor.twitter.api.ITwitterAPI;
 import fr.egor.twitter.view.profile.ProfileControl;
 import fr.egor.twitter.view.tweet.list.ListTweetControl;
 import fr.egor.twitter.view.tweet.send.PostTweetControl;
@@ -17,7 +15,6 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("../twitter-e.fxml"));
-
     PostTweetControl postTweetControl = new PostTweetControl();
     HBox hbox = new HBox();
     hbox.getChildren().add(postTweetControl);
