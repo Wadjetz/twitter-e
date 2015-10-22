@@ -15,6 +15,7 @@ public class Main extends Application {
   @Override
   public void start(Stage primaryStage) throws Exception {
     Parent root = FXMLLoader.load(getClass().getResource("../twitter-e.fxml"));
+
     PostTweetControl postTweetControl = new PostTweetControl();
     HBox hbox = new HBox();
     hbox.getChildren().add(postTweetControl);
