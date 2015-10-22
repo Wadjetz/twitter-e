@@ -10,7 +10,7 @@ public class TwitterAPI {
 
   private TwitterAPI() throws TwitterException {}
 
-  public static ITwitterAPI getInstance() throws TwitterException {
+  public static synchronized ITwitterAPI getInstance() throws TwitterException {
     if (twitterAPI == null) {
       twitterAPI = new RealTwitterAPI();
     }
