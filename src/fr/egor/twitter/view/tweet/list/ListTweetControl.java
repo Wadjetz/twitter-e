@@ -32,7 +32,7 @@ public class ListTweetControl extends VBox {
     }
 
     Async.async(() -> {
-      List<Status> list = new TwitterAPI().getHomeTimeline();
+      List<Status> list = TwitterAPI.getInstance().getHomeTimeline();
       tweetsList.addAll(list);
       return null;
     });

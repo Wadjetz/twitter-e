@@ -33,7 +33,7 @@ public class ProfileControl extends VBox {
     }
 
     Async.async(() -> {
-      Image image = new Image(new TwitterAPI().getProfileImageUrl());
+      Image image = new Image(TwitterAPI.getInstance().getProfileImageUrl());
       Platform.runLater(() ->
         userPictureByUrl.setImage(image)
       );
@@ -41,7 +41,7 @@ public class ProfileControl extends VBox {
     });
 
     Async.async(() -> {
-      String fullname = new TwitterAPI().getFullName();
+      String fullname = TwitterAPI.getInstance().getFullName();
       Platform.runLater(() ->
         fullNameProfil.setText(fullname)
       );
@@ -49,7 +49,7 @@ public class ProfileControl extends VBox {
     });
 
     Async.async(() -> {
-      String fullScreenName = new TwitterAPI().getFullScreenName();
+      String fullScreenName = TwitterAPI.getInstance().getFullScreenName();
       Platform.runLater(() ->
         screenNameProfil.setText("@" + fullScreenName)
       );
@@ -57,7 +57,7 @@ public class ProfileControl extends VBox {
     });
 
     Async.async(() -> {
-      String tweetsCount = new TwitterAPI().getTweetsCountProfil();
+      String tweetsCount = TwitterAPI.getInstance().getTweetsCountProfil();
       Platform.runLater(() ->
         tweetsNombers.setText(tweetsCount + " tweets")
       );
@@ -65,7 +65,7 @@ public class ProfileControl extends VBox {
     });
 
     Async.async(() -> {
-      String friendsCount = new TwitterAPI().getFriendsCountProfil();
+      String friendsCount = TwitterAPI.getInstance().getFriendsCountProfil();
       Platform.runLater(() ->
         abonnementsNumbers.setText(friendsCount)
       );
@@ -73,7 +73,7 @@ public class ProfileControl extends VBox {
     });
 
     Async.async(() -> {
-      String followersCount = new TwitterAPI().getFollowersCountProfil();
+      String followersCount = TwitterAPI.getInstance().getFollowersCountProfil();
       Platform.runLater(() ->
         abonnesNumbers.setText(followersCount)
       );

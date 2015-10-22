@@ -20,7 +20,7 @@ public class RealTwitterAPI implements ITwitterAPI {
 
   @Override
   public String getProfileImageUrl() throws TwitterException {
-    String url = user.getOriginalProfileImageURL().toString();
+    String url = user.getOriginalProfileImageURL();
     System.out.println(url);
     return url;
   }

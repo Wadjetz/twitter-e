@@ -41,7 +41,7 @@ public class PostTweetControl extends VBox {
     String text = tweetContent.getText();
     System.out.println(text);
     Async.async(() -> {
-      new TwitterAPI().postTweet(text);
+      TwitterAPI.getInstance().postTweet(text);
       return null;
     });
   }
