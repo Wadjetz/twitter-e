@@ -14,57 +14,19 @@ public class RealTwitterAPI implements ITwitterAPI {
   }
 
   @Override
-  public List<Status> getHomeTimeline() throws TwitterException {
-    return twitter.getHomeTimeline();
+  public List<Status> getHomeTimeline(Paging p) throws TwitterException {
+    return twitter.getHomeTimeline(p);
   }
 
   @Override
-  public String getProfileImageUrl() throws TwitterException {
-    String url = user.getOriginalProfileImageURL();
-    System.out.println(url);
-    return url;
+  public User getUser() throws TwitterException {
+    return user;
   }
 
-  @Override
-  public String getFullName() throws TwitterException {
-    return user.getName();
-  }
 
   @Override
-  public String getFullScreenName() throws TwitterException {
-    return user.getScreenName();
+  public Status postTweet(String content) throws TwitterException {
+    return twitter.updateStatus(content);
   }
 
-  @Override
-  public String getTweetsCountProfil() throws TwitterException {
-    return String.valueOf(user.getStatusesCount());
-  }
-
-  @Override
-  public String getFriendsCountProfil() throws TwitterException {
-    return String.valueOf(user.getFriendsCount());
-  }
-
-  @Override
-  public String getFollowersCountProfil() throws TwitterException {
-    return String.valueOf(user.getFollowersCount());
-  }
-
-  @Override
-  public void getTrendsProfile() throws TwitterException {
-    Trends trends = twitter.getPlaceTrends(1);
-    System.out.println(trends);
-  }
-
-  @Override
-  public void postTweet(String content) throws TwitterException {
-    twitter.updateStatus(content);
-  }
-
-  @Override
-  public void setListener(StatusListener statusListener) {
-    TwitterStream twitterStream = new TwitterStreamFactory().getInstance();
-    twitterStream.addListener(statusListener);
-    twitterStream.user();
-  }
 }

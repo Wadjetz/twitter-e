@@ -12,6 +12,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+import org.joda.time.format.PeriodFormatter;
+import org.joda.time.format.PeriodFormatterBuilder;
 import twitter4j.Status;
 
 import java.util.Date;
@@ -50,33 +54,23 @@ public class TweetCell extends ListCell<Status> {
 
 
       Label lblCreatedAt = new Label();
-      Long dstatus = status.getCreatedAt().getTime() / 1000l;
-      Long dnow = new Date().getTime() / 1000l;
-      Long Ddif = dnow-dstatus;
-            Long seconds = Ddif % 60;
-            Long minutes= (Ddif / 60)%60;
-            Long heures= ((Ddif / 60) / 60) %24;
-            Long jours= (((Ddif / 60) / 60) /24 ) %30;
-            Long mois= ((((Ddif / 60) / 60) /24) /30 ) %365;
-            Long annee= (((((Ddif / 60) / 60) /24) /30 ) /365) % 365;
+      DateTime date = new DateTime(status.getCreatedAt().getTime());
+      Period period = new Period(date, DateTime.now());
+      PeriodFormatter formatter = new PeriodFormatterBuilder()
+        .appendYears().appendSuffix(" years ")
+        .appendMonths().appendSuffix(" months ")
+        .appendWeeks().appendSuffix(" weeks ")
+        .appendDays().appendSuffix(" days ")
+        .appendHours().appendSuffix(" hours ")
+        .appendMinutes().appendSuffix(" minutes ")
+        .appendSuffix(" ago ")
+        .printZeroNever()
+        .toFormatter();
 
-            String str ="Il y a ";
-            if(annee >0)
-              str+=" "+annee+ " ans ";
-            if(mois >0)
-              str+=" "+mois+ " mois ";
-            if(jours >0)
-              str+=" "+jours+ " jours ";
-            if(heures >0)
-              str+=" "+heures+ " heures ";
-            if(minutes >0)
-              str+=" "+minutes+ " minutes ";
-            if(seconds >0)
-              str+=" "+seconds+ " seconds ";
+      String elapsed = formatter.print(period);
 
+      lblCreatedAt.setText(elapsed);
 
-
-      lblCreatedAt.setText(str);
       lblCreatedAt.setPadding(new Insets(5,15,0,0));
       hb2.getChildren().add(lblCreatedAt);
 
