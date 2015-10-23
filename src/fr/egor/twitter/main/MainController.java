@@ -158,13 +158,17 @@ public class MainController implements Initializable {
 
           Platform.runLater(() -> {
             tweetsList.setAll(list);
+            System.out.println(page);
             currentPage.setText(page+"");
           });
           return null;
         });
       } else {
         System.out.println("previousTweets saved=" + saved.size());
-        Platform.runLater(() -> tweetsList.setAll(saved));
+        Platform.runLater(() -> {
+          tweetsList.setAll(saved);
+          currentPage.setText(page+"");
+        });
       }
     }
   }
