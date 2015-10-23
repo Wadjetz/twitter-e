@@ -2,8 +2,6 @@ package fr.egor.twitter.view.tweet.send;
 
 import fr.egor.twitter.api.TwitterAPI;
 import fr.egor.twitter.async.Async;
-import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -11,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
 import java.io.IOException;

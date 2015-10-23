@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface ITwitterAPI {
   List<Status> getHomeTimeline() throws TwitterException;
+  List<Status> getHomeTimeline(Paging pages) throws TwitterException;
   String getProfileImageUrl() throws TwitterException;
   String getFullName() throws TwitterException;
   String getFullScreenName() throws TwitterException;

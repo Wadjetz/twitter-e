@@ -19,6 +19,11 @@ public class RealTwitterAPI implements ITwitterAPI {
   }
 
   @Override
+  public List<Status> getHomeTimeline(Paging pages) throws TwitterException {
+    return twitter.getHomeTimeline(pages);
+  }
+
+  @Override
   public String getProfileImageUrl() throws TwitterException {
     String url = user.getOriginalProfileImageURL();
     System.out.println(url);

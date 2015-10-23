@@ -1,39 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml">
+<fx:root type="javafx.scene.layout.VBox" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
   <padding>
-    <Insets bottom="10" left="10" right="10" top="10" />
+    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
   </padding>
-  <HBox>
-
-    <ImageView
-      fitWidth="50"
-      fitHeight="50"
-      fx:id="userPictureByUrl" />
-
-    <VBox>
-      <Label
-        fx:id="fullNameProfil" />
-
-      <Label
-        fx:id="screenNameProfil" />
-    </VBox>
-
-    <Label
-      fx:id="tweetsNombers"
-      text="0" />
-
-    <Label
-      fx:id="abonnementsNumbers"
-      text="0" />
-
-    <Label fx:id="abonnesNumbers" text="0" />
-
-  </HBox>
+  <GridPane>
+    <children>
+      <HBox GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="0" GridPane.rowSpan="2">
+        <padding>
+          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" fx:id="x1" />
+        </padding>
+        <ImageView fx:id="userPictureByUrl" fitHeight="50.0" fitWidth="50.0" HBox.margin="$x1">
+          <image>
+            <Image url="@../../pictures/no-picture.jpg" />
+          </image>
+        </ImageView>
+        <VBox>
+          <Label fx:id="fullNameProfil" />
+          <padding>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+          </padding>
+          <Label fx:id="screenNameProfil" />
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+          <padding>
+            <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+          </padding>
+          <Label fx:id="tweetsNombers" text="0">
+            <graphic>
+              <ImageView fitHeight="20.0" fitWidth="20.0">
+                <image>
+                  <Image url="@../../pictures/twitter_count.png" />
+                </image>
+              </ImageView>
+            </graphic>
+          </Label>
+          <Label fx:id="abonnementsNumbers" text="0">
+            <graphic>
+              <ImageView fitHeight="20.0" fitWidth="20.0">
+                <image>
+                  <Image url="@../../pictures/twitter_following.jpg" />
+                </image>
+              </ImageView>
+            </graphic>
+          </Label>
+          <Label fx:id="abonnesNumbers" text="0">
+            <graphic>
+              <ImageView fitHeight="20.0" fitWidth="20.0">
+                <image>
+                  <Image url="@../../pictures/twitter_followers.jpg" />
+                </image>
+              </ImageView>
+            </graphic>
+          </Label>
+        </VBox>
+      </HBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="2">
+          <GridPane>
+              <TextField fx:id="txtCountTweet" alignment="CENTER" prefWidth="-1.0" text="20" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="1" />
+              <Button fx:id="btnUploadTweet" blendMode="DARKEN" cancelButton="false" defaultButton="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-1.0" mnemonicParsing="false" onMouseClicked="#setListTweetWithCount" text="Upload" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="0" GridPane.rowSpan="1">
+                <font>
+                  <Font name="System Bold" size="12.0" />
+                </font>
+              </Button>
+            <columnConstraints>
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+          </GridPane>
+       </VBox>
+    </children>
+    <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+  </GridPane>
 </fx:root>

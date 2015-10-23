@@ -27,7 +27,10 @@ public class Main extends Application {
     hbox.getChildren().add(profileControl);
 
     primaryStage.setTitle("TwitterE");
-    primaryStage.setScene(new Scene(root, 1200, 700));
+    Scene scene =new Scene(root, 1200, 700);
+    scene.getStylesheets().add("fr/egor/twitter/css/main.css");
+    primaryStage.setScene(scene);
+
     primaryStage.show();
   }
 

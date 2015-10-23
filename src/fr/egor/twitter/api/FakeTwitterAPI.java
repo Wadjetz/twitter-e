@@ -1,5 +1,6 @@
 package fr.egor.twitter.api;
 
+import twitter4j.Paging;
 import twitter4j.Status;
 import twitter4j.StatusListener;
 import twitter4j.TwitterException;
@@ -8,6 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FakeTwitterAPI implements ITwitterAPI {
+
+  @Override
+  public List<Status> getHomeTimeline(Paging pages) throws TwitterException {
+    return new ArrayList<>();
+  }
 
   @Override
   public List<Status> getHomeTimeline() throws TwitterException {
